@@ -45,8 +45,8 @@
 ## Specifications (business-logic)
 
  - Generate random number for the dice [DONE]
- - What objects and what it store
+ - What objects and what it store [ongoing]
 
- -  fine if the dice number is holding the number in an array
- -  get array to hold each rolled number with in array. and not number range
-    - why changing var i = 1 let index 0 switch numbers
+ -  fine if the dice number is holding the number in an array [ongoing]
+ -  get array to hold each rolled number with in array. and not number range [ongoing]
+    - why changing var i = 1 let index 0 switch numbers [ongoing]
