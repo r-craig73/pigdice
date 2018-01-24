@@ -6,13 +6,13 @@ function Players (name, score) {
 };
 
 function randomNumber(numberGen) {
-  var numberGen = Math.floor((Math.random()*6) +1);
+  var numberGen = Math.floor((Math.random()* (7-1) + 1));
   return numberGen;
 };
 
 function randomSum(diceRoll) {
   var diceRolls = [];
-  for (var i = 0; i <= 5; i++) {
+  for (var i = 1; i <= 5; i++) {
     diceRolls[i] = diceRolls.push(diceRoll);
   }
   console.log(diceRolls);
