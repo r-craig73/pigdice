@@ -1,49 +1,77 @@
 //business
 
-
-function Player (name, score, totalScore) {
+function Player (name, score, roundScore, totalScore) {
   this.name = name;
   this.score = [];
-  this.totalScore = [];
+  this.roundScore = 0;
+  this.totalScore = 0;
 }
-
-//var player1 = new Player("Bob");
 
 Player.prototype.rollingDice = function() {
    var rollDice = Math.floor((Math.random()* (7-1) + 1));
    if (rollDice >= 2) {
    this.score.push(rollDice)
+   console.log(rollDice);
   } else {
     this.score = [];
-     return console.log("Hold up, #1, switch player");
+    return
    }
 };
 
 Player.prototype.hold = function() {
-    var a = this.score;
-    var c = this.totalScore;
-    var total = a.reduce(function (a, b) {
+    var s = this.score;
+    var subtotal = s.reduce(function (a, b) {
       return a + b ;
     });
-      c.push(total);
+      this.roundScore = subtotal;
       this.score=[];
 };
 
+Player.prototype.total = function() {
+  this.totalScore += this.roundScore
+  this.roundScore = 0;
 
-// new player needs to be made.
-// var bob = new Player("bob");
-//bob.rollingDice();
-//bob.score(); *it will hold all of the rollingDice numbers in array*
+};
 
-//
-// Player.prototype.hold = function() {
-//
-// }
-//
+// when it reaches 100. it will be win
+Player.prototype.winner = function(){
+  if (this.totalScore >= 25) {
+    console.log("You win!  Happy dance time!")
+  }
+  
+};
+
+
+// var player1 = "name1";
+// var player2 = "name2";
+
+
 // $(document).ready(function() {
 //
 //
-//
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   $("form#player-1").submit(function(event) {
 //     event.preventDefault();
 //     $("#nameButton").text();
@@ -62,4 +90,3 @@ Player.prototype.hold = function() {
 //     // var sum = Player.prototype.randomSum(point);
 //     //$(".totalNumber").text(sum);
 //   });
-// });
