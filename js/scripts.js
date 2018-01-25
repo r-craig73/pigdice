@@ -3,47 +3,48 @@
 function Player (name, score, totalScore) {
   this.name = name;
   this.score = [];
-  this.totalScore = [];
-  // make .score an empty array or make it into it's seperate this. ** not too sure **
-};
+  this.totalScore = 0;
+}
 
 Player.prototype.rollingDice = function() {
-  // turn into prototype because each prototype will only apply to certain players
-  return Math.floor((Math.random()* (7-1) + 1));
-  // return numberGen;
-};
+  // make number generate here
+   var rollDice = Math.floor((Math.random()* (7-1) + 1));
+   // player1.score = rollDice;
+   this.score.push(rollDice);
+   console.log(rollDice);
+   return
+}
 
-Player.prototype.randomSum = function() {
-  //turn functions into prototypes. you want it to roll once and store it within the player. so not necessary for it to be a for loop. since you just want to roll once, and save within the player array. That way you can push their roll result into the array.
-  var diceRolls = [];
-  var score = 0;
-  for (var i = 1; i <= 5; i++) {
-    // diceRolls = [];
-    if (rollingDice === 1) {
-      diceRolls.push(i);  // push the index into the empty array for it to store
-    } else {
-      diceRolls.push(rollingDice);
-      console.log(diceRolls);
-      ///sum = diceRolls.reduce();
-    }
-    //Player.score.rollingDice();
-    // return diceRolls;
-  }
-    return diceRolls;
-};
+// new player needs to be made.
+// var bob = new Player("bob");
+//bob.rollingDice();
+//bob.score(); *it will hold all of the rollingDice numbers in array*
 
-//logic
-$(document).ready(function() {
-  $("form#player-1").submit(function(event) {
-    event.preventDefault();
-    $("#nameButton").text();
-  });
-  $("#random").click(function(event) {
-    event.preventDefault();
-    var point = Player.prototype.rollingDice();
-    // alert(point);
-    $(".randomNumber").text(point);
-    // var sum = Player.prototype.randomSum(point);
-    //$(".totalNumber").text(sum);
-  });
-});
+//
+// Player.prototype.hold = function() {
+//
+// }
+//
+// $(document).ready(function() {
+//
+//
+//
+//   $("form#player-1").submit(function(event) {
+//     event.preventDefault();
+//     $("#nameButton").text();
+//   });
+//   $("#random").click(function(event) {
+//     event.preventDefault();
+//     // var number;
+//     var player1 = new Player("Bob");
+//
+//     return Player.rollingDice(player1);
+//     // alert(point);
+//     // player1.score = point;
+//     // console.log(player1.score);
+//     // console.log(player1);
+//     // $(".randomNumber").text(player1.score);
+//     // var sum = Player.prototype.randomSum(point);
+//     //$(".totalNumber").text(sum);
+//   });
+// });
