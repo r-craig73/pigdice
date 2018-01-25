@@ -4,7 +4,7 @@
 function Player (name, score, totalScore) {
   this.name = name;
   this.score = [];
-  this.totalScore = 0;
+  this.totalScore = [];
 }
 
 //var player1 = new Player("Bob");
@@ -15,15 +15,20 @@ Player.prototype.rollingDice = function() {
    this.score.push(rollDice)
   } else {
     this.score = [];
-     return console.log("Hold up");
+     return console.log("Hold up, #1, switch player");
    }
 };
 
 Player.prototype.hold = function() {
-  
-     this.totalscore.push(thisScore);
-
+    var a = this.score;
+    var c = this.totalScore;
+    var total = a.reduce(function (a, b) {
+      return a + b ;
+    });
+      c.push(total);
+      this.score=[];
 };
+
 
 // new player needs to be made.
 // var bob = new Player("bob");
