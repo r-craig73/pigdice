@@ -19,10 +19,11 @@ Player.prototype.rollingDice = function() {
    }
 };
 
-// Player.prototype.hold = function() {
-//    this.score.push(rollDice);
-//    return
-// };
+Player.prototype.hold = function() {
+  
+     this.totalscore.push(thisScore);
+
+};
 
 // new player needs to be made.
 // var bob = new Player("bob");
