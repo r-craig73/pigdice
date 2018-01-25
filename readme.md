@@ -50,3 +50,6 @@
  -  fine if the dice number is holding the number in an array [ongoing]
  -  get array to hold each rolled number with in array. and not number range [ongoing]
     - why changing var i = 1 let index 0 switch numbers [ongoing]
+
+ - turn roll and sum into prototypes
+ - for rolling prototype . not necessary for it to be a for loop. you want it to roll once, and store into player roll/score []; 
