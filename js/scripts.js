@@ -1,19 +1,28 @@
 //business
 
+
 function Player (name, score, totalScore) {
   this.name = name;
   this.score = [];
   this.totalScore = 0;
 }
 
+//var player1 = new Player("Bob");
+
 Player.prototype.rollingDice = function() {
-  // make number generate here
    var rollDice = Math.floor((Math.random()* (7-1) + 1));
-   // player1.score = rollDice;
-   this.score.push(rollDice);
-   console.log(rollDice);
-   return
-}
+   if (rollDice >= 2) {
+   this.score.push(rollDice)
+  } else {
+    this.score = [];
+     return console.log("Hold up");
+   }
+};
+
+// Player.prototype.hold = function() {
+//    this.score.push(rollDice);
+//    return
+// };
 
 // new player needs to be made.
 // var bob = new Player("bob");
