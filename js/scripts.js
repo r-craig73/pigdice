@@ -38,7 +38,7 @@ Player.prototype.winner = function(){
   if (this.totalScore >= 25) {
     console.log("You win!  Happy dance time!")
   }
-  
+
 };
 
 
@@ -46,19 +46,15 @@ Player.prototype.winner = function(){
 // var player2 = "name2";
 
 
-// $(document).ready(function() {
-//
-//
-// });
+$(document).ready(function() {
+  var player1 = new Player (name);
 
+  $("#random").click(function(event){
+    event.preventDefault();
+    
+  });
 
-
-
-
-
-
-
-
+});
 
 
 
