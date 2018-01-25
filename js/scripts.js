@@ -2,15 +2,15 @@
 
 function Player (name, score, totalScore) {
   this.name = name;
-  this.score = score;
-  this.totalScore =totalScore
+  this.score = [];
+  this.totalScore = [];
   // make .score an empty array or make it into it's seperate this. ** not too sure **
 };
 
 Player.prototype.rollingDice = function() {
   // turn into prototype because each prototype will only apply to certain players
-  var numberGen = Math.floor((Math.random()* (7-1) + 1));
-  return numberGen;
+  return Math.floor((Math.random()* (7-1) + 1));
+  // return numberGen;
 };
 
 Player.prototype.randomSum = function() {
@@ -26,6 +26,7 @@ Player.prototype.randomSum = function() {
       console.log(diceRolls);
       ///sum = diceRolls.reduce();
     }
+    //Player.score.rollingDice();
     // return diceRolls;
   }
     return diceRolls;
@@ -39,9 +40,10 @@ $(document).ready(function() {
   });
   $("#random").click(function(event) {
     event.preventDefault();
-    var point = rollingDice();
-    // $(".randomNumber").text(point);
-    var sum = randomSum(point);
-    $(".totalNumber").text(sum);
+    var point = Player.prototype.rollingDice();
+    // alert(point);
+    $(".randomNumber").text(point);
+    // var sum = Player.prototype.randomSum(point);
+    //$(".totalNumber").text(sum);
   });
 });
