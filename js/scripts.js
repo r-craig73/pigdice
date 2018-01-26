@@ -1,6 +1,6 @@
 //business
 
-function Player (name, score, roundScore, totalScore) {
+function Player (name) {
   this.name = name;
   this.score = [];
   this.roundScore = 0;
@@ -41,20 +41,38 @@ Player.prototype.winner = function(){
 
 };
 
-
-// var player1 = "name1";
-// var player2 = "name2";
-
-
 $(document).ready(function() {
-  var player1 = new Player (name);
-
-  $("#random").click(function(event){
+  $("form#entry").submit(function(event) {
     event.preventDefault();
-    
-  });
+    var name = $("input#player-1").val();
+    var player1 = new Player(name);
+    $("#playername").text(player1.name);
+    console.log(player1.name);
 
+
+//roll click
+    $("#random").click(function(){
+      player1.rollingDice();
+      $("#roundScore").text(player1.score);
+      console.log(player1.score);
+//hold click
+      // $("#hold").click(function(event){
+      //     event.preventDefault();
+      //     player1.hold();
+      //
+      //     $("#totalNumber").text(player1.totalScore);
+      //     console.log(player1.totalScore);
+      // });
+    });
+  });
 });
+    // var firstPlayer = $("button#nameButton").val();
+    // var player1 = new Player (name)
+    // var secondPlayer = $(this).find("input#player-2").val();
+    // var player2 = new Player (firstPlayer).val();
+
+
+
 
 
 
