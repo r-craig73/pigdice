@@ -1,46 +1,46 @@
-//business
+// Business Side
 
 function Player (name) {
   this.name = name;
-  this.score = [];
-  this.roundScore = 0;
+  this.score = 0;
+  this.roundScore = [];
   this.totalScore = 0;
 }
 
 Player.prototype.rollingDice = function() {
    var rollDice = Math.floor((Math.random()* (7-1) + 1));
    if (rollDice >= 2) {
-   this.score.push(rollDice)
-   console.log(rollDice);
+   this.score += rollDice;
+   console.log("Current roll: " + rollDice);
+   console.log("Total roll: " + this.score);
+   return "Your score is " + this.score + ".  Do you want to roll or hold?";
   } else {
-    this.score = [];
-    return
+    console.log("Current roll: " + rollDice);
+    console.log("Total roll: " + this.score);
+    this.score = 0;
+    return "Oh, Oh, you rolled a 1.  Your score is " + this.score + " and your turn is over :-(";
    }
 };
 
 Player.prototype.hold = function() {
-    var s = this.score;
-    var subtotal = s.reduce(function (a, b) {
-      return a + b ;
-    });
-      this.roundScore = subtotal;
-      this.score=[];
+    this.roundScore.push(this.score);
+    return "Your round score is " + this.roundScore().slice(-1).pop();  // or last this.roundScore index
 };
 
 Player.prototype.total = function() {
   this.totalScore += this.roundScore
   this.roundScore = 0;
-
 };
 
-// when it reaches 100. it will be win
+// when the round score reaches 25, the player wins
 Player.prototype.winner = function(){
-  if (this.totalScore >= 25) {
-    console.log("You win!  Happy dance time!")
+  if (this.score >= 25) {
+    console.log("You win!  Happy dance time!");
   }
-
 };
 
+
+// Frontend side
 $(document).ready(function() {
   $("form#entry").submit(function(event) {
     event.preventDefault();
@@ -50,12 +50,12 @@ $(document).ready(function() {
     console.log(player1.name);
 
 
-//roll click
+    //roll click
     $("#random").click(function(){
-      player1.rollingDice();
-      $("#roundScore").text(player1.score);
-      console.log(player1.score);
-//hold click
+      $("#roundScore").text(player1.rollingDice());
+      player1.winner();
+    });
+    //hold click
       // $("#hold").click(function(event){
       //     event.preventDefault();
       //     player1.hold();
@@ -63,28 +63,12 @@ $(document).ready(function() {
       //     $("#totalNumber").text(player1.totalScore);
       //     console.log(player1.totalScore);
       // });
-    });
   });
 });
     // var firstPlayer = $("button#nameButton").val();
     // var player1 = new Player (name)
     // var secondPlayer = $(this).find("input#player-2").val();
     // var player2 = new Player (firstPlayer).val();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //   $("form#player-1").submit(function(event) {
 //     event.preventDefault();
