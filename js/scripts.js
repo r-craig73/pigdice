@@ -10,10 +10,10 @@ function Player (name) {
 Player.prototype.rollingDice = function() {
    var rollDice = Math.floor((Math.random()* (7-1) + 1));
    if (rollDice >= 2) {
-   this.score += rollDice;
-   console.log("Current roll: " + rollDice);
-   console.log("Total roll: " + this.score);
-   return "Your score is " + this.score + ".  Do you want to roll or hold?";
+    this.score += rollDice;
+    console.log("Current roll: " + rollDice);
+    console.log("Total roll: " + this.score);
+    return "Your score is " + this.score + ".  Do you want to roll or hold?";
   } else {
     console.log("Current roll: " + rollDice);
     console.log("Total roll: " + this.score);
@@ -24,7 +24,7 @@ Player.prototype.rollingDice = function() {
 
 Player.prototype.hold = function() {
     this.roundScore.push(this.score);
-    return "Your round score is " + this.roundScore().slice(-1).pop();  // or last this.roundScore index
+    return "Your round score is " + this.roundScore.slice(-1).pop();  // or last this.roundScore index
 };
 
 Player.prototype.total = function() {
@@ -56,13 +56,12 @@ $(document).ready(function() {
       player1.winner();
     });
     //hold click
-      // $("#hold").click(function(event){
-      //     event.preventDefault();
-      //     player1.hold();
-      //
-      //     $("#totalNumber").text(player1.totalScore);
-      //     console.log(player1.totalScore);
-      // });
+    $("#hold").click(function(event){
+        event.preventDefault();
+        $("#roundScore").text(player1.hold());
+        // console.log(player1.hold());
+        console.log(player1.roundScore);
+    });
   });
 });
     // var firstPlayer = $("button#nameButton").val();
