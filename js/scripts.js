@@ -13,11 +13,20 @@ Player.prototype.rollingDice = function() {
     this.score += rollDice;
     console.log("Current roll: " + rollDice);
     console.log("Total roll: " + this.score);
-    return "Your score is " + this.score + ".  Do you want to roll or hold?";
+    if (this.score >= 25) {
+      finalRoll = rollDice;
+      finalScore = this.score;
+      this.score = 0;
+      this.roundScore = [];
+      return "You rolled a " + finalRoll + " and your score is >= 25 (" + finalScore + ")  You win!  Happy dance time!";
+    } else {
+      return "You rolled a " + rollDice + ".  Your score is " + this.score + ".  Do you want to roll or hold?";
+    }
   } else {
     console.log("Current roll: " + rollDice);
     console.log("Total roll: " + this.score);
     this.score = 0;
+    this.roundScore = [];
     return "Oh, Oh, you rolled a 1.  Your score is " + this.score + " and your turn is over :-(";
    }
 };
@@ -26,19 +35,6 @@ Player.prototype.hold = function() {
     this.roundScore.push(this.score);
     return "Your round score is " + this.roundScore.slice(-1).pop();  // or last this.roundScore index
 };
-
-Player.prototype.total = function() {
-  this.totalScore += this.roundScore
-  this.roundScore = 0;
-};
-
-// when the round score reaches 25, the player wins
-Player.prototype.winner = function(){
-  if (this.score >= 25) {
-    console.log("You win!  Happy dance time!");
-  }
-};
-
 
 // Frontend side
 $(document).ready(function() {
@@ -52,14 +48,14 @@ $(document).ready(function() {
 
     //roll click
     $("#random").click(function(){
+      event.preventDefault();
       $("#roundScore").text(player1.rollingDice());
-      player1.winner();
+      
     });
     //hold click
     $("#hold").click(function(event){
         event.preventDefault();
         $("#roundScore").text(player1.hold());
-        // console.log(player1.hold());
         console.log(player1.roundScore);
     });
   });
