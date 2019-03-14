@@ -21,7 +21,7 @@ Player.prototype.rollingDice = function() {
       $(".random").hide();
       $(".hold").hide();
       $(".new-game").show();
-      return "You rolled a " + finalRoll + " and your score is greater than or equal to 25 ( " + finalScore + " ).\n  You win!  Happy dance time!";
+      return "You rolled a " + finalRoll + " and your score is greater than or equal to 25 ( " + finalScore + " ).  You win!  Happy dance time!";
     } else {
       return "You rolled a " + rollDice + ".  Your score is " + this.score + ".  Do you want to roll or hold?";
     }
