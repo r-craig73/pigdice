@@ -7,7 +7,7 @@ function Player (name) {
 }
 
 Player.prototype.rollingDice = function() {
-   var rollDice = Math.floor((Math.random()* (7-1) + 1));
+   let rollDice = Math.floor((Math.random()* (7-1) + 1));
    if (rollDice >= 2) {
     this.score += rollDice;
     console.log("Current roll: " + rollDice);
@@ -23,10 +23,10 @@ Player.prototype.rollingDice = function() {
       return "You rolled a " + rollDice + ".  Your score is " + this.score + ".  Do you want to roll or hold?";
     }
   } else {
-    console.log("Current roll: " + rollDice);
-    console.log("Total roll: " + this.score);
     this.score = 0;
     this.roundScore = [];
+    console.log("Current roll: " + rollDice);
+    console.log("Total roll: " + this.score);
     gameOver();
     return "Oh, Oh, you rolled a 1.  Your score is " + this.score + " and your turn is over :-(";
    }
@@ -55,8 +55,8 @@ function gameOver(){
 $(document).ready(function() {
   $("form#entry").submit(function(event) {
     event.preventDefault();
-    var name = $("input#player-1").val();
-    var player1 = new Player(name);
+    let name = $("input#player-1").val();
+    let player1 = new Player(name);
     $("#playername").text(player1.name);
     console.log(player1.name);
     rollingDiceOptions();
